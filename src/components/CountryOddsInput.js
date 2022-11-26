@@ -13,7 +13,20 @@ export default function CountryOddsInput(props) {
     return (
         <>
             <div>
-                <label htmlFor={name}>{data.zh_tw}：</label>
+                <label htmlFor={name}>
+                    <span>{data.zh_tw}</span>
+                    <img
+                        src={`https://countryflagsapi.com/png/${
+                            name === 'South Korea'
+                                ? 'The Republic Of Korea'
+                                : name
+                        }`}
+                        alt=""
+                        style={{ width: '30px' }}
+                    />
+                    <span>：</span>
+                </label>
+
                 <input
                     className="me-2"
                     id={name}
