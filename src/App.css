@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.country-odds-area{
+  transform: translateX(-10%);
+}
+
+@media screen and (min-width:768px) {
+  .country-odds-area{
+    transform: translateX(0);
+  }
+}

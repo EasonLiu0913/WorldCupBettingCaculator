@@ -2,19 +2,26 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function BetInput(props) {
-    const { name, dataCountry, value, setValue, totalBetAmount } = props;
+    const { name, dataCountry, value, setValue, totalBetAmount, delBetTeams } =
+        props;
 
     function handleClick(e) {
         switch (e.target.innerHTML) {
             case '-':
-                setValue({ name, value: value - 100 });
+                if (value <= 100) return;
+                setValue({ name, value: value - 50 });
                 break;
             case '+':
-                setValue({ name, value: value + 100 });
+                setValue({ name, value: value + 50 });
                 break;
             default:
                 break;
         }
+    }
+
+    function handelDelBetTeams(event) {
+        const countryName = event.target.getAttribute('data-country');
+        delBetTeams(countryName);
     }
 
     return (
@@ -62,6 +69,18 @@ function BetInput(props) {
                 <span className="winlose">
                     {value * dataCountry.odds - totalBetAmount}
                 </span>
+            </td>
+            <td
+                className=""
+                style={{ verticalAlign: 'middle', textAlign: 'center' }}
+            >
+                <button
+                    className="btn btn-outline-danger"
+                    data-country={name}
+                    onClick={(name) => handelDelBetTeams(name)}
+                >
+                    X
+                </button>
             </td>
         </tr>
     );

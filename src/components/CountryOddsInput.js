@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function CountryOddsInput(props) {
-    const { name, data, setBetTeams } = props;
+    const { name, data, setBetTeams, countryData } = props;
     function handleClick(event) {
         const teamName = event.target.getAttribute('data-country');
         setBetTeams(teamName, event.target.checked);
@@ -16,6 +16,7 @@ export default function CountryOddsInput(props) {
                 <label htmlFor={name}>
                     <span>{data.zh_tw}</span>
                     <img
+                        className="mx-2"
                         src={`https://countryflagsapi.com/png/${
                             name === 'South Korea'
                                 ? 'The Republic Of Korea'
@@ -24,7 +25,6 @@ export default function CountryOddsInput(props) {
                         alt=""
                         style={{ width: '30px' }}
                     />
-                    <span>：</span>
                 </label>
 
                 <input
@@ -38,7 +38,9 @@ export default function CountryOddsInput(props) {
                 <input
                     type="checkbox"
                     data-country={name}
-                    onClick={handleClick}
+                    data-ischecked={countryData[name].isChecked}
+                    checked={countryData[name].isChecked}
+                    onChange={handleClick}
                 ></input>
             </div>
         </>
