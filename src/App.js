@@ -202,7 +202,7 @@ function App() {
         setBetTeamsIndex(newBetTeamsIndex);
         setTotalBetAmount(newTotal);
 
-        console.log('isChecked', betTeams);
+        // console.log('isChecked', betTeams);
     }, [betTeams]);
 
     function handleBetValueChange(newValue) {
@@ -236,6 +236,7 @@ function App() {
     }
 
     function handleBalance() {
+        if (betTeams.length < 1) return;
         let totalAmount = 0;
         const bonusArray = [];
         const newBetTeams = [...betTeams];
@@ -250,8 +251,6 @@ function App() {
             totalAmount += +item.value;
         });
 
-        // console.log('bonusArray', bonusArray);
-
         let tempTotalAmount = totalAmount;
         const minAmountTeams = [];
         let isNotTurnover = true;
@@ -265,46 +264,27 @@ function App() {
             });
 
             if (bonusArray[0][2] === 150) {
-                // console.log('shift(=150)');
                 minAmountTeams.push(bonusArray.shift());
             }
 
-            // console.log('tempTotalAmount', +JSON.stringify(tempTotalAmount));
-            // console.log(
-            //     'bonusArray[bonusArray.length - 1][1]',
-            //     +JSON.stringify(bonusArray[bonusArray.length - 1][1])
-            // );
-
-            // console.log(
-            //     'true/false:',
-            //     JSON.stringify(
-            //         +totalAmount > +bonusArray[bonusArray.length - 1][1]
-            //     )
-            // );
-
             if (+totalAmount > +bonusArray[bonusArray.length - 1][1]) {
                 if (isNotTurnover && bonusArray.length > 1) {
-                    // console.log('isNotTurnover && bonusArray.length > 1');
                     if (
                         bonusArray[0][2] > 150 &&
                         bonusArray[0][2] * bonusArray[0][3] - totalAmount >
                             50 * bonusArray[0][3]
                     ) {
-                        // console.log(`-50`);
                         bonusArray[0][2] = bonusArray[0][2] - 50;
                         bonusArray[0][1] = bonusArray[0][2] * bonusArray[0][3];
                         tempTotalAmount -= 50;
                         countryIndex = betTeamsIndex[bonusArray[0][0]];
                         countryValue = bonusArray[0][2];
-                        // console.log('tempTotalAmount', tempTotalAmount);
                     } else {
-                        // console.log('shift(else)');
                         minAmountTeams.push(bonusArray.shift());
                         isAddMinAmountTeams = true;
                     }
                 } else {
                     isNotTurnover = !isNotTurnover;
-                    // console.log('+50');
                     bonusArray[bonusArray.length - 1][2] =
                         bonusArray[bonusArray.length - 1][2] + 50;
                     bonusArray[bonusArray.length - 1][1] =
@@ -317,7 +297,6 @@ function App() {
                     countryValue = bonusArray[bonusArray.length - 1][2];
                 }
                 if (isAddMinAmountTeams) {
-                    // console.log('isAddMinAmountTeams');
                     isNotTurnover = false;
                     isAddMinAmountTeams = !isAddMinAmountTeams;
                 }
@@ -328,17 +307,19 @@ function App() {
                     setBetTeams(newBetTeams);
                 }
 
-                // console.log('bonusArray', JSON.stringify(bonusArray));
-                // console.log('minAmountTeams', JSON.stringify(minAmountTeams));
-
                 if (
                     (bonusArray.length === 1 && bonusArray[0][2] > 5000) ||
                     +totalAmount < +bonusArray[bonusArray.length - 1][1]
-                )
+                ) {
+                    alert('已盡力平衡投注金額');
                     return;
+                }
+
                 setTimeout(() => {
                     checkBalance();
                 }, 50);
+            } else {
+                alert('賺賠金額已平衡');
             }
         }
 
