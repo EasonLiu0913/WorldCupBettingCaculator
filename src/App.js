@@ -201,7 +201,10 @@ function App() {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-4 text-end" style={{ minWidth: '330px' }}>
+                <div
+                    className="col-4 text-end mb-5"
+                    style={{ minWidth: '330px' }}
+                >
                     <h2>各球隊冠軍賠率</h2>
                     <div
                         className="text-end"
@@ -226,7 +229,7 @@ function App() {
                             })}
                     </form>
                 </div>
-                <div className="col-6 offset-1">
+                <div className="col-12 col-md-6 offset-md-1">
                     <h2>投注金額試算</h2>
                     <table id="betting" className="table table-bordered">
                         <tbody>

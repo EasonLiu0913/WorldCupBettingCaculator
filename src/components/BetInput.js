@@ -20,11 +20,16 @@ function BetInput(props) {
     return (
         <tr>
             <td className="m-0 country-odds">
-                {dataCountry.zh_tw}, 賠率:{dataCountry.odds}
+                <p>{dataCountry.zh_tw}</p>
+                <p className="mb-0">
+                    {' '}
+                    <span className="d-none d-sm-inline">賠率:</span>{' '}
+                    {dataCountry.odds}
+                </p>
             </td>
 
             <td>
-                <label>投注金額</label>
+                <p>投注金額</p>
                 <button
                     className="bet-button px-2 py-0 border mx-2"
                     onClick={(e) => handleClick(e)}
@@ -48,12 +53,12 @@ function BetInput(props) {
             </td>
 
             <td>
-                獎金：
+                <p>獎金：</p>
                 <span className="winnings">${value * dataCountry.odds}</span>
             </td>
 
             <td>
-                賺/賠：
+                <p>賺/賠：</p>
                 <span className="winlose">
                     {value * dataCountry.odds - totalBetAmount}
                 </span>
