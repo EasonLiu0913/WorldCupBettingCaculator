@@ -12,7 +12,7 @@ function App() {
         },
         France: {
             zh_tw: '法國',
-            odds: '6.00',
+            odds: '5.75',
             isChecked: false,
         },
         Spain: {
@@ -22,12 +22,12 @@ function App() {
         },
         Argentina: {
             zh_tw: '阿根廷',
-            odds: '7.25',
+            odds: '6.75',
             isChecked: false,
         },
         England: {
             zh_tw: '英格蘭',
-            odds: '7.50',
+            odds: '7.75',
             isChecked: false,
         },
         Portugal: {
@@ -52,7 +52,7 @@ function App() {
         },
         Denmark: {
             zh_tw: '丹麥',
-            odds: '38.00',
+            odds: '50.00',
             isChecked: false,
         },
         Uruguay: {
@@ -62,7 +62,7 @@ function App() {
         },
         Japan: {
             zh_tw: '日本',
-            odds: '65.00',
+            odds: '70.00',
             isChecked: false,
         },
         Croatia: {
@@ -82,7 +82,7 @@ function App() {
         },
         Mexico: {
             zh_tw: '墨西哥',
-            odds: '80.00',
+            odds: '600.00',
             isChecked: false,
         },
         Serbia: {
@@ -97,12 +97,12 @@ function App() {
         },
         USA: {
             zh_tw: '美國',
-            odds: '150.00',
+            odds: '120.00',
             isChecked: false,
         },
         Poland: {
             zh_tw: '波蘭',
-            odds: '150.00',
+            odds: '70.00',
             isChecked: false,
         },
         Canada: {
@@ -112,7 +112,7 @@ function App() {
         },
         Morocco: {
             zh_tw: '摩洛哥',
-            odds: '150.00',
+            odds: '200.00',
             isChecked: false,
         },
         'South Korea': {
@@ -127,7 +127,7 @@ function App() {
         },
         Ghana: {
             zh_tw: '迦納',
-            odds: '275.00',
+            odds: '400.00',
             isChecked: false,
         },
         Iran: {
@@ -137,12 +137,12 @@ function App() {
         },
         Australia: {
             zh_tw: '澳洲',
-            odds: '400.00',
+            odds: '275.00',
             isChecked: false,
         },
         Tunisia: {
             zh_tw: '突尼西亞',
-            odds: '400.00',
+            odds: '1500.00',
             isChecked: false,
         },
         Cameroon: {
@@ -162,7 +162,7 @@ function App() {
         },
         Qatar: {
             zh_tw: '卡達',
-            odds: '',
+            odds: '0',
             isChecked: false,
         },
     });
